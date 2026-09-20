@@ -82,6 +82,21 @@ func main() {
 
 	fmt.Println()
 	fmt.Println("Nombre de soldats vivants :", vivants)
+	// Exercice 7
+	fmt.Println()
+	fmt.Println("=== FIN DE LA BATAILLE ===")
+	fmt.Println()
+
+	fmt.Println("Nombre de soldats vivants :", vivants)
+	fmt.Println("Nombre de soldats KO :", 6-vivants)
+	fmt.Println()
+
+	if peutContinuer(equipe) {
+		fmt.Println("L'équipe peut continuer le combat !")
+	} else {
+		fmt.Println("Tous les soldats sont KO...")
+		fmt.Println("La bataille est terminée !")
+	}
 }
 
 func afficherEquipe(equipe [6]Soldat) {
@@ -179,4 +194,14 @@ func compterVivants(equipe [6]Soldat, index int) int {
 	}
 
 	return compterVivants(equipe, index+1)
+}
+
+func peutContinuer(equipe [6]Soldat) bool {
+	for i := 0; i < 6; i++ {
+		if equipe[i].vie > 0 {
+			return true
+		}
+	}
+
+	return false
 }

@@ -63,3 +63,15 @@ Cette fonction utilise la recursivite au lieu dune boucle for
 La fonction se rappelle elle meme en augmentant lindex pour verifier le soldat suivant
 
 Quand lindex arrive a 6 cela veut dire que tous les soldats ont ete verifies et la fonction sarrete.
+
+Exercice7:
+
+Dans le dernier exercice on ajoute la fonction peutContinuer.
+
+peutContinuer: Cette fonction verifie si au moins un soldat est encore vivant
+Si elle trouve un soldat avec plus de 0 pv elle retourne true
+Si tous les soldats sont KO elle retourne false
+
+A la fin on affiche le nombre de soldats vivants et le nombre de soldats KO.
+
+Si au moins un soldat est vivant lequipe peut continuer le combat, sinon la bataille est terminee.

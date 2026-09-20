@@ -77,6 +77,11 @@ func main() {
 
 		afficherEtat(equipe)
 	}
+	// Exercice 6
+	vivants := compterVivants(equipe, 0)
+
+	fmt.Println()
+	fmt.Println("Nombre de soldats vivants :", vivants)
 }
 
 func afficherEquipe(equipe [6]Soldat) {
@@ -162,4 +167,16 @@ func afficherEtat(equipe [6]Soldat) {
 			fmt.Println(equipe[i].nom, ": KO")
 		}
 	}
+}
+
+func compterVivants(equipe [6]Soldat, index int) int {
+	if index == 6 {
+		return 0
+	}
+
+	if equipe[index].vie > 0 {
+		return 1 + compterVivants(equipe, index+1)
+	}
+
+	return compterVivants(equipe, index+1)
 }

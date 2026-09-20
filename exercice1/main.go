@@ -54,6 +54,29 @@ func main() {
 
 	// Exercice 4
 	afficherEtat(equipe)
+
+	// Exercice 5
+	var nombreAttaques int
+
+	fmt.Println()
+	fmt.Println("=== BATAILLE ===")
+	fmt.Println()
+
+	fmt.Print("Nombre d'attaques ennemies : ")
+	fmt.Scanln(&nombreAttaques)
+
+	for i := 1; i <= nombreAttaques; i++ {
+		fmt.Print("Attaque ", i, " : ")
+		fmt.Scanln(&degats)
+
+		attaquerEquipe(&equipe, degats)
+
+		fmt.Println()
+		fmt.Println("=== APRÈS L'ATTAQUE", i, "===")
+		fmt.Println()
+
+		afficherEtat(equipe)
+	}
 }
 
 func afficherEquipe(equipe [6]Soldat) {

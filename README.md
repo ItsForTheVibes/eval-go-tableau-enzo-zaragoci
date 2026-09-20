@@ -1,8 +1,14 @@
-# Évaluation Go
+Évaluation Go
 
 Zaragoci
+
 Enzo
 
-## Exercices
+Exercices
 
-Exercice1 : 
+Exercice1 :
+
+Dans notre fonction afficherEquipe cela se fait en deux parties
+
+Afficher la banniere de lequipe pour separer les exercices
+Et chaque personnage qui saffiche avec leur nom vie et attaque.

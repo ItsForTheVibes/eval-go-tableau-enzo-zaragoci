@@ -18,7 +18,30 @@ func main() {
 		{"Jaina", 500, 450},
 	}
 
+	// Exercice 1
 	afficherEquipe(equipe)
+
+	// Exercice 2
+	plusDeVie := trouverPlusDeVie(equipe)
+	plusDAttaque := trouverPlusDAttaque(equipe)
+	vieMoyenne := calculerVieMoyenne(equipe)
+	faibles := compterFaibles(equipe)
+
+	fmt.Println("=== ANALYSE ===")
+	fmt.Println()
+
+	fmt.Println("Soldat avec le plus de vie :", plusDeVie.nom)
+	fmt.Println("Vie :", plusDeVie.vie)
+	fmt.Println()
+
+	fmt.Println("Soldat avec la plus grande attaque :", plusDAttaque.nom)
+	fmt.Println("Attaque :", plusDAttaque.attaque)
+	fmt.Println()
+
+	fmt.Printf("Vie moyenne :", vieMoyenne)
+	fmt.Println()
+
+	fmt.Println("Soldats avec moins de 800 PV :", faibles)
 }
 
 func afficherEquipe(equipe [6]Soldat) {
@@ -31,4 +54,50 @@ func afficherEquipe(equipe [6]Soldat) {
 		fmt.Println("Attaque :", equipe[i].attaque)
 		fmt.Println()
 	}
+}
+
+func trouverPlusDeVie(equipe [6]Soldat) Soldat {
+	plusDeVie := equipe[0]
+
+	for i := 1; i < 6; i++ {
+		if equipe[i].vie > plusDeVie.vie {
+			plusDeVie = equipe[i]
+		}
+	}
+
+	return plusDeVie
+}
+
+func trouverPlusDAttaque(equipe [6]Soldat) Soldat {
+	plusDAttaque := equipe[0]
+
+	for i := 1; i < 6; i++ {
+		if equipe[i].attaque > plusDAttaque.attaque {
+			plusDAttaque = equipe[i]
+		}
+	}
+
+	return plusDAttaque
+}
+
+func calculerVieMoyenne(equipe [6]Soldat) float64 {
+	total := 0
+
+	for i := 0; i < 6; i++ {
+		total = total + equipe[i].vie
+	}
+
+	return float64(total) / 6
+}
+
+func compterFaibles(equipe [6]Soldat) int {
+	faibles := 0
+
+	for i := 0; i < 6; i++ {
+		if equipe[i].vie < 800 {
+			faibles++
+		}
+	}
+
+	return faibles
 }

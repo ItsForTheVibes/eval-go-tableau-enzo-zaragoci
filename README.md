@@ -42,3 +42,24 @@ Si le soldat a plus de 0 pv on affiche son nombre de pv
 Si le soldat a 0 pv on affiche KO a la place
 
 Cela nous permet de voir letat de lequipe apres une attaque.
+
+Exercice5:
+
+Dans le cinquieme exercice on cree le deroulement de la bataille.
+
+On demande dabord combien dattaques lennemi va effectuer
+Une boucle for permet de repeter les attaques le nombre de fois demande
+Pour chaque attaque on demande les degats
+On utilise attaquerEquipe pour enlever les pv
+Ensuite on utilise afficherEtat pour voir letat de lequipe apres chaque attaque
+
+Exercice6:
+
+Dans le sixieme exercice on ajoute la fonction compterVivants.
+
+compterVivants: Cette fonction permet de compter combien de soldats sont encore vivants
+Un soldat est vivant si ses pv sont superieurs a 0
+Cette fonction utilise la recursivite au lieu dune boucle for
+La fonction se rappelle elle meme en augmentant lindex pour verifier le soldat suivant
+
+Quand lindex arrive a 6 cela veut dire que tous les soldats ont ete verifies et la fonction sarrete.

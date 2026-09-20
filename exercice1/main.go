@@ -51,7 +51,7 @@ func main() {
 
 	// Exercice 3
 	fmt.Println()
-	degats := demanderNombre("Dégâts de l'ennemi : ")
+	degats := demanderNombre("Degats de l'ennemi : ")
 
 	attaquerEquipe(&equipe, degats)
 
@@ -72,7 +72,7 @@ func main() {
 		attaquerEquipe(&equipe, degats)
 
 		fmt.Println()
-		fmt.Println("=== APRÈS L'ATTAQUE", i, "===")
+		fmt.Println("=== APRES L'ATTAQUE", i, "===")
 
 		afficherEtat(equipe)
 	}
@@ -90,10 +90,10 @@ func main() {
 	fmt.Println()
 
 	if peutContinuer(equipe) {
-		fmt.Println("L'équipe peut continuer le combat !")
+		fmt.Println("L'equipe peut continuer le combat!, bonne chance!")
 	} else {
-		fmt.Println("Tous les soldats sont KO...")
-		fmt.Println("La bataille est terminée !")
+		fmt.Println("Tous les soldats sont KO, RIP, try again.")
+		fmt.Println("La bataille est terminee!")
 	}
 }
 
@@ -110,12 +110,12 @@ func demanderNombre(message string) int {
 		nombre, erreur := strconv.Atoi(texte)
 
 		if erreur != nil {
-			fmt.Println("Erreur : vous devez entrer un nombre entier.")
+			fmt.Println("Erreur: Et bah non, faut rentrer un nombre entier!")
 			continue
 		}
 
 		if nombre < 0 {
-			fmt.Println("Erreur : le nombre ne peut pas être négatif.")
+			fmt.Println("Erreur: tu peux arreter d'essayer de casser mon code merci")
 			continue
 		}
 
@@ -196,7 +196,7 @@ func attaquerEquipe(equipe *[6]Soldat, degats int) {
 
 func afficherEtat(equipe [6]Soldat) {
 	fmt.Println()
-	fmt.Println("=== ÉTAT DE L'ÉQUIPE ===")
+	fmt.Println("=== ETAT DE L'EQUIPE ===")
 	fmt.Println()
 
 	for i := 0; i < 6; i++ {

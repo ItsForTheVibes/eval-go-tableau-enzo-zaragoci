@@ -32,3 +32,13 @@ Si la vie dun soldat descend en dessous de 0 on la remet a 0
 Si le soldat arrive a 0 pv il est considere comme KO et ne perdra plus de vie
 
 On utilise aussi un pointeur sur equipe pour pouvoir modifier directement les pv des soldats.
+
+Exercice4:
+
+Dans le quatrieme exercice on ajoute la fonction afficherEtat.
+
+afficherEtat: Cette fonction permet dafficher la vie actuelle de chaque soldat
+Si le soldat a plus de 0 pv on affiche son nombre de pv
+Si le soldat a 0 pv on affiche KO a la place
+
+Cela nous permet de voir letat de lequipe apres une attaque.

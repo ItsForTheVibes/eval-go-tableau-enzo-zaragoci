@@ -51,6 +51,9 @@ func main() {
 	fmt.Scanln(&degats)
 
 	attaquerEquipe(&equipe, degats)
+
+	// Exercice 4
+	afficherEtat(equipe)
 }
 
 func afficherEquipe(equipe [6]Soldat) {
@@ -120,6 +123,20 @@ func attaquerEquipe(equipe *[6]Soldat, degats int) {
 				equipe[i].vie = 0
 				fmt.Println(equipe[i].nom, "est KO !")
 			}
+		}
+	}
+}
+
+func afficherEtat(equipe [6]Soldat) {
+	fmt.Println()
+	fmt.Println("=== ÉTAT DE L'ÉQUIPE ===")
+	fmt.Println()
+
+	for i := 0; i < 6; i++ {
+		if equipe[i].vie > 0 {
+			fmt.Println(equipe[i].nom, ":", equipe[i].vie, "PV")
+		} else {
+			fmt.Println(equipe[i].nom, ": KO")
 		}
 	}
 }

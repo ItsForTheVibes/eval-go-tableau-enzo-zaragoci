@@ -42,6 +42,15 @@ func main() {
 	fmt.Println()
 
 	fmt.Println("Soldats avec moins de 800 PV :", faibles)
+
+	// Exercice 3
+	var degats int
+
+	fmt.Println()
+	fmt.Print("Dégâts de l'ennemi : ")
+	fmt.Scanln(&degats)
+
+	attaquerEquipe(&equipe, degats)
 }
 
 func afficherEquipe(equipe [6]Soldat) {
@@ -100,4 +109,17 @@ func compterFaibles(equipe [6]Soldat) int {
 	}
 
 	return faibles
+}
+
+func attaquerEquipe(equipe *[6]Soldat, degats int) {
+	for i := 0; i < 6; i++ {
+		if equipe[i].vie > 0 {
+			equipe[i].vie = equipe[i].vie - degats
+
+			if equipe[i].vie <= 0 {
+				equipe[i].vie = 0
+				fmt.Println(equipe[i].nom, "est KO !")
+			}
+		}
+	}
 }

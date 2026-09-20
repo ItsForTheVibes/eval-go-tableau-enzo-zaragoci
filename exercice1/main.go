@@ -1,6 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
 
 type Soldat struct {
 	nom     string
@@ -38,17 +44,14 @@ func main() {
 	fmt.Println("Attaque :", plusDAttaque.attaque)
 	fmt.Println()
 
-	fmt.Printf("Vie moyenne :", vieMoyenne)
+	fmt.Printf("Vie moyenne : %.2f\n", vieMoyenne)
 	fmt.Println()
 
 	fmt.Println("Soldats avec moins de 800 PV :", faibles)
 
 	// Exercice 3
-	var degats int
-
 	fmt.Println()
-	fmt.Print("Dégâts de l'ennemi : ")
-	fmt.Scanln(&degats)
+	degats := demanderNombre("Dégâts de l'ennemi : ")
 
 	attaquerEquipe(&equipe, degats)
 
@@ -56,32 +59,27 @@ func main() {
 	afficherEtat(equipe)
 
 	// Exercice 5
-	var nombreAttaques int
-
 	fmt.Println()
 	fmt.Println("=== BATAILLE ===")
 	fmt.Println()
 
-	fmt.Print("Nombre d'attaques ennemies : ")
-	fmt.Scanln(&nombreAttaques)
+	nombreAttaques := demanderNombre("Nombre d'attaques ennemies : ")
 
 	for i := 1; i <= nombreAttaques; i++ {
-		fmt.Print("Attaque ", i, " : ")
-		fmt.Scanln(&degats)
+		fmt.Println()
+		degats = demanderNombre("Attaque " + strconv.Itoa(i) + " : ")
 
 		attaquerEquipe(&equipe, degats)
 
 		fmt.Println()
 		fmt.Println("=== APRÈS L'ATTAQUE", i, "===")
-		fmt.Println()
 
 		afficherEtat(equipe)
 	}
+
 	// Exercice 6
 	vivants := compterVivants(equipe, 0)
 
-	fmt.Println()
-	fmt.Println("Nombre de soldats vivants :", vivants)
 	// Exercice 7
 	fmt.Println()
 	fmt.Println("=== FIN DE LA BATAILLE ===")
@@ -96,6 +94,32 @@ func main() {
 	} else {
 		fmt.Println("Tous les soldats sont KO...")
 		fmt.Println("La bataille est terminée !")
+	}
+}
+
+// Permet de demander un nombre valide
+func demanderNombre(message string) int {
+	reader := bufio.NewReader(os.Stdin)
+
+	for {
+		fmt.Print(message)
+
+		texte, _ := reader.ReadString('\n')
+		texte = strings.TrimSpace(texte)
+
+		nombre, erreur := strconv.Atoi(texte)
+
+		if erreur != nil {
+			fmt.Println("Erreur : vous devez entrer un nombre entier.")
+			continue
+		}
+
+		if nombre < 0 {
+			fmt.Println("Erreur : le nombre ne peut pas être négatif.")
+			continue
+		}
+
+		return nombre
 	}
 }
 
@@ -185,7 +209,7 @@ func afficherEtat(equipe [6]Soldat) {
 }
 
 func compterVivants(equipe [6]Soldat, index int) int {
-	if index == 6 {
+	if index >= 6 {
 		return 0
 	}
 
